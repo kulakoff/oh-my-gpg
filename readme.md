@@ -26,6 +26,18 @@ pub   ed25519/F3B5B016B821946A 2024-01-20 [SC]
 uid               [  абсолютно ] Семен Семенович <semenich@example.com>
 sub   cv25519/FB99554F5EA45E31 2024-01-20 [E]
 ```
+# Вывод отпечатка ключа
+```
+gpg --fingerprint
+```
+```
+anton@localhost:~> gpg --fingerprint  FB99554F5EA45E31
+pub   ed25519 2024-01-20 [SC]
+      A5A1 5E98 8F7F 8210 BF75  D257 F3B5 B016 B821 946A
+uid         [ неизвестно ] Семен Семенович <semenich@example.com>
+sub   cv25519 2024-01-20 [E]
+
+```
 
 # Экспорт
 ### Экспорт публичного ключа
@@ -69,4 +81,20 @@ gpg --delete-secret-keys FB99554F5EA45E31
 ### Удаление публичного ключа
 ```
 gpg --delete-keys FB99554F5EA45E31
+```
+----
+# Распространение ключей
+Отправка на серверпубличных ключей
+```
+gpg --send-keys FB99554F5EA45E31
+```
+Указать собственный серер
+```
+gpg --keyserver keyring.debian.org --recv-keys FB99554F5EA45E31
+```
+
+# Обновить срок действия ключа
+```
+gpg --edit-key D1667A1286F719A2
+expire
 ```
